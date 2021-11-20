@@ -1,5 +1,6 @@
 package sample;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class signupController {
@@ -47,13 +49,17 @@ public class signupController {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                String name = namefield.getText();
-                String surname = surnamefield.getText();
-                String login = loginfield.getText();
-                String password = passwordfield.getText();
-                User user = new User(name, surname, login, password);
-//                handler.signupuser(name, surname, login, password);
-                handler.signupuser(user);
+                String name = namefield.getText().trim();
+                String surname = surnamefield.getText().trim();
+                String login = loginfield.getText().trim();
+                String password = passwordfield.getText().trim();
+                if(name != "" && surname != "" && login != "" && password != "") {
+                    User user = new User(name, surname, login, password);
+                    handler.signupuser(user);
+                } else {
+                    System.out.println("The fiedls are empty");
+
+                }
                 Parent root = null;
                 try {
                     root = FXMLLoader.load(signupController.this.getClass().getResource("sample.fxml"));
@@ -67,11 +73,7 @@ public class signupController {
                 stage.setResizable(false);
 
                 signupbutton.getScene().getWindow().hide();
-
-
             }
         });
-
     }
-
 }

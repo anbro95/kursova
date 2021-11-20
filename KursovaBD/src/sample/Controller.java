@@ -40,9 +40,6 @@ public class Controller {
 
     @FXML
 
-
-
-
     void initialize() {
 
 
@@ -72,16 +69,9 @@ public class Controller {
                 stage.setResizable(false);
 
                 signuplink.getScene().getWindow().hide();
-
-
             }
         });
-
-
-
-
     }
-
     private void loginuser(String logintext, String passwordtext) {
         dbhandler handler = new dbhandler();
         User user = new User();
@@ -105,12 +95,12 @@ public class Controller {
             System.out.println("Success!");
             Parent root = null;
             try {
-                root = FXMLLoader.load(Controller.this.getClass().getResource("mainpage.fxml"));
+                root = FXMLLoader.load(Controller.this.getClass().getResource("abonents.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             Stage stage = new Stage();
-            stage.setTitle("Головна");
+            stage.setTitle("Абоненти");
             stage.setScene(new Scene(root, 900, 600));
             stage.show();
             stage.setResizable(false);
